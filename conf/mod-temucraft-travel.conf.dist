@@ -1,0 +1,101 @@
+[worldserver]
+
+########################################
+# mod-temucraft-travel
+########################################
+#
+#    Temucraft.Travel.Enable
+#        Description: Repair kits and the Cozy Sleeping Bag.
+#        Default:     1
+
+Temucraft.Travel.Enable = 1
+
+#
+#    Temucraft.Travel.RepairKits
+#        Description: Which items repair equipped gear: "item:percent:maxItemLevel,..." (maxItemLevel 0 = any).
+#                     The items need ScriptName item_temucraft_repair_kit (data/sql does that for its three kits).
+#        Default:     "601621:25:100,601622:50:200,601623:100:0"
+
+Temucraft.Travel.RepairKits = "601621:25:100,601622:50:200,601623:100:0"
+
+#
+#    Temucraft.Travel.SleepingBag.Entry
+#        Description: The bedroll gameobject the Cozy Sleeping Bag lays down.
+#        Default:     601620
+
+Temucraft.Travel.SleepingBag.Entry = 601620
+
+#
+#    Temucraft.Travel.SleepingBag.Duration
+#        Description: Seconds the bedroll stays.
+#        Default:     600
+
+Temucraft.Travel.SleepingBag.Duration = 600
+
+#
+#    Temucraft.Travel.SleepingBag.RestedPerMinute
+#        Description: Rested experience per minute of sleep, in percent of the experience for your next level (the
+#                     usual rested cap still applies). 0 = none.
+#        Default:     1
+
+Temucraft.Travel.SleepingBag.RestedPerMinute = 1
+
+#
+#    Temucraft.Travel.Hearthstone.Enable
+#        Description: Hearthstone cooldown as each player chooses (at any innkeeper, or .hearthstone <minutes>).
+#                     Applies to every spell sharing the hearthstone's cooldown.
+#        Default:     1
+#
+#    Temucraft.Travel.Hearthstone.Choices
+#        Description: The cooldowns offered, in minutes (0 = no cooldown).
+#        Default:     "0,15,30,45,60"
+#
+#    Temucraft.Travel.Hearthstone.Default
+#        Description: Cooldown in minutes for players who never chose (30 = the game's own).
+#        Default:     30
+#
+#    Temucraft.Travel.Hearthstone.AllowChoice
+#        Description: Players may choose. 0 = Default applies to everyone.
+#        Default:     1
+
+Temucraft.Travel.Hearthstone.Enable = 1
+Temucraft.Travel.Hearthstone.Choices = "0,15,30,45,60"
+Temucraft.Travel.Hearthstone.Default = 30
+Temucraft.Travel.Hearthstone.AllowChoice = 1
+
+#
+#    Temucraft.Travel.SafeLanding
+#        Description: A player who falls through the world (under the map) is put back on the last ground they
+#                     stood on instead of falling into the void and dying. Open world only.
+#        Default:     1
+
+Temucraft.Travel.SafeLanding = 1
+
+#
+#    Temucraft.Travel.SwiftFlights
+#        Description: Flight paths go faster for players with a flight speed bonus, on top of the server's
+#                     Rate.TaxiFlightSpeed. Spells: "spell:percent" pairs counted while the player knows the spell or
+#                     has its aura (117983 = guild perk Ride Like the Wind). Other modules add theirs (mod-temucraft-legacy
+#                     Swift Flights). Max caps the total bonus.
+#        Default:     1, "117983:25", 100
+
+Temucraft.Travel.SwiftFlights = 1
+Temucraft.Travel.SwiftFlights.Spells = "117983:25"
+Temucraft.Travel.SwiftFlights.Max = 100
+
+#
+#    Temucraft.Travel.TaxiLeavesForm
+#        Description: At a flight master while shapeshifted (or mounted), the menu offers "Leave <form> and fly" with a
+#                     confirmation, then removes the form (or dismounts) and opens the flight map, instead of the
+#                     "can't do that while shapeshifted" error.
+#        Default:     1
+
+Temucraft.Travel.TaxiLeavesForm = 1
+
+#
+#    Temucraft.Travel.FlightFormFare
+#        Description: Druids in Flight Form get "Fly in Flight Form" at flight masters: the flight costs this % of the
+#                     price and they're back in Flight Form on landing (100 = no such option).
+#        Default:     50
+
+Temucraft.Travel.FlightFormFare = 50
