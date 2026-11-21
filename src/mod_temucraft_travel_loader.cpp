@@ -5,6 +5,7 @@ void AddTemucraftSafeLandingScripts();
 void AddTemucraftSwiftFlightScripts();
 void AddTemucraftTaxiFormsScripts();
 void AddTemucraftHomecomingScripts();
+void AddTemucraftAtlasScripts();
 
 void Addmod_temucraft_travelScripts()
 {
@@ -14,4 +15,5 @@ void Addmod_temucraft_travelScripts()
     AddTemucraftSwiftFlightScripts();
     AddTemucraftTaxiFormsScripts();
     AddTemucraftHomecomingScripts();
+    AddTemucraftAtlasScripts();
 }

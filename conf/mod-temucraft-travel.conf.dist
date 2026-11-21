@@ -99,3 +99,17 @@ Temucraft.Travel.TaxiLeavesForm = 1
 #        Default:     50
 
 Temucraft.Travel.FlightFormFare = 50
+
+#
+#    Temucraft.Travel.Atlas.Enable
+#        Description: Skyreader's Atlas items: learn every flight path of your faction on one continent.
+#        Default:     1
+
+Temucraft.Travel.Atlas.Enable = 1
+
+#
+#    Temucraft.Travel.Atlas.FirstItem
+#        Description: Item entry of the first atlas (Eastern Kingdoms); the next three are Kalimdor, Outland, Northrend.
+#        Default:     610146
+
+Temucraft.Travel.Atlas.FirstItem = 610146

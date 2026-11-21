@@ -92,3 +92,10 @@ At a flight master while shapeshifted (or mounted), the menu's first option is "
 own name), with a confirmation ("Flying will remove your Cat Form. Continue?"). Yes removes the form (or dismounts)
 and opens the flight map, instead of the "can't do that while shapeshifted" error. Flight masters with a script of
 their own, and flight masters the client opens without a menu, are left as they are. `Temucraft.Travel.TaxiLeavesForm`.
+
+## Skyreader's Atlas
+
+Four items (610146 Eastern Kingdoms, 610147 Kalimdor, 610148 Outland, 610149 Northrend). Using one learns every flight
+path of your faction on that continent (quest and transport nodes stay out). Sold on the Temucraft Curator's Helpers
+list for 100 tokens, in the Vanity window under "Travel", and mailed for the Explore Eastern Kingdoms, Kalimdor and
+Outland achievements. RBAC permission 103351 (linked to the player roles).

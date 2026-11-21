@@ -15,4 +15,7 @@ INSERT INTO `module_string` (`module`, `id`, `string`) VALUES
 ('mod-temucraft-travel', 41, 'Flying will remove your {}. Continue?'),
 ('mod-temucraft-travel', 42, 'Dismount and fly.'),
 ('mod-temucraft-travel', 43, 'Flying will dismount you. Continue?'),
-('mod-temucraft-travel', 44, 'Fly in Flight Form ({}% of the price).');
+('mod-temucraft-travel', 44, 'Fly in Flight Form ({}% of the price).'),
+('mod-temucraft-travel', 60, 'You can''t use this here.'),
+('mod-temucraft-travel', 61, '|cff66ccffSkyreader''s Atlas:|r {} new flight paths learned.'),
+('mod-temucraft-travel', 62, '|cff66ccffSkyreader''s Atlas:|r you know every flight path there already.');
