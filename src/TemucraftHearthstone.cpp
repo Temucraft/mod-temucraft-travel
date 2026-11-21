@@ -123,7 +123,7 @@ namespace
     {
         uint32 const guid = player->GetGUID().GetCounter();
         chosen[guid] = minutes;
-        CharacterDatabase.Execute("REPLACE INTO `mod_temucraft_hearthstone` (`guid`, `minutes`) VALUES ({}, {})", guid, minutes);
+        CharacterDatabase.Execute("REPLACE INTO `mod_temucraft_character_setting` (`guid`, `setting`, `value`) VALUES ({}, 'hearthstone', {})", guid, minutes);
         ChatHandler(player->GetSession()).PSendSysMessage(Say(player, T_SET,
             "|cffffcc00Hearthstone:|r cooldown set to {} (from its next use)."), Label(player, minutes));
     }
@@ -143,15 +143,15 @@ public:
     void OnPlayerLogin(Player* player) override
     {
         uint32 const guid = player->GetGUID().GetCounter();
-        if (QueryResult r = CharacterDatabase.Query("SELECT `minutes` FROM `mod_temucraft_hearthstone` WHERE `guid` = {}", guid))
-            chosen[guid] = r->Fetch()[0].Get<uint32>();
+        if (QueryResult r = CharacterDatabase.Query("SELECT `value` FROM `mod_temucraft_character_setting` WHERE `guid` = {} AND `setting` = 'hearthstone'", guid))
+            chosen[guid] = uint32(r->Fetch()[0].Get<int32>());
     }
 
     void OnPlayerLogout(Player* player) override { chosen.erase(player->GetGUID().GetCounter()); }
 
     void OnPlayerDelete(ObjectGuid guid, uint32 /*accountId*/) override
     {
-        CharacterDatabase.Execute("DELETE FROM `mod_temucraft_hearthstone` WHERE `guid` = {}", guid.GetCounter());
+        CharacterDatabase.Execute("DELETE FROM `mod_temucraft_character_setting` WHERE `guid` = {} AND `setting` = 'hearthstone'", guid.GetCounter());
     }
 
     void OnPlayerSpellCast(Player* player, Spell* spell, bool /*skipCheck*/) override

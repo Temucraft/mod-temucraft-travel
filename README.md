@@ -57,7 +57,7 @@ Repair kits, the Cozy Sleeping Bag and a hearthstone cooldown of your choice.
 | world | `npc_vendor` | the Stones and Scrolls at every innkeeper who is also a vendor |
 | world | `player_factionchange_items` | Alliance and Horde Stones and Scrolls swap on a faction change |
 | world | `mod_temucraft_vanity_item` | 610030-610049 (made here if missing; read by mod-temucraft-account-wide) |
-| characters | `mod_temucraft_hearthstone` | per character: hearthstone cooldown |
+| characters | `mod_temucraft_character_setting` (setting `hearthstone`) | per character: hearthstone cooldown |
 | client | `Spell.dbc` | 95020, 97151-97170 |
 | client | `SpellCategory.dbc` | 1820, 1821 |
 
