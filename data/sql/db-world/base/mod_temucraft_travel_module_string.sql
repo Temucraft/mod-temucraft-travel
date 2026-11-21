@@ -3,7 +3,7 @@ DELETE FROM `module_string` WHERE `module` = 'mod-temucraft-travel';
 INSERT INTO `module_string` (`module`, `id`, `string`) VALUES
 ('mod-temucraft-travel', 1, '|cffffcc00{}|r'),
 ('mod-temucraft-travel', 2, '|cffffcc00Hearthstone:|r cooldown set to {} (from its next use).'),
-('mod-temucraft-travel', 3, '|cffffcc00Hearthstone:|r cooldown {}. Choose with .hearthstone <minutes>: {}.'),
+('mod-temucraft-travel', 3, '|cffffcc00Hearthstone:|r cooldown {}. Choose with .temucraft hearthstone <minutes>: {}.'),
 ('mod-temucraft-travel', 4, 'That cooldown isn''t one of the choices.'),
 ('mod-temucraft-travel', 5, 'This server decides that for everyone.'),
 ('mod-temucraft-travel', 6, 'Hearthstone cooldown ({}).'),

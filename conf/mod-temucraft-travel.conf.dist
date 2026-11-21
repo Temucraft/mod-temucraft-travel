@@ -42,7 +42,7 @@ Temucraft.Travel.SleepingBag.RestedPerMinute = 1
 
 #
 #    Temucraft.Travel.Hearthstone.Enable
-#        Description: Hearthstone cooldown as each player chooses (at any innkeeper, or .hearthstone <minutes>).
+#        Description: Hearthstone cooldown as each player chooses (at any innkeeper, or .temucraft hearthstone <minutes>).
 #                     Applies to every spell sharing the hearthstone's cooldown.
 #        Default:     1
 #

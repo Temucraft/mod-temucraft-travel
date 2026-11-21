@@ -7,7 +7,7 @@
 
 // Hearthstone cooldown as each player likes it: none, 15, 30 (the game's own), 45 or 60 minutes. Applies to every
 // spell that shares the hearthstone's cooldown (Hearthstone and the items like it). Chosen at any innkeeper or with
-// .hearthstone <minutes>; the server picks the default and which choices are offered.
+// .temucraft hearthstone <minutes>; the server picks the default and which choices are offered.
 
 #include "Chat.h"
 #include "CommandScript.h"
@@ -207,7 +207,7 @@ public:
 
     ChatCommandTable GetCommands() const override
     {
-        static ChatCommandTable root = { { "hearthstone", Handle, SEC_PLAYER, Console::No } };
+        static ChatCommandTable root = { { "temucraft hearthstone", Handle, 103350, Console::No } };
         return root;
     }
 
@@ -226,7 +226,7 @@ public:
             std::string list;
             for (uint32 m : hearth.choices)
                 list += (list.empty() ? "" : ", ") + std::to_string(m);
-            handler->PSendSysMessage(Say(player, T_STATUS, "|cffffcc00Hearthstone:|r cooldown {}. Choose with .hearthstone <minutes>: {}."),
+            handler->PSendSysMessage(Say(player, T_STATUS, "|cffffcc00Hearthstone:|r cooldown {}. Choose with .temucraft hearthstone <minutes>: {}."),
                 Label(player, MinutesOf(player)), list);
             return true;
         }

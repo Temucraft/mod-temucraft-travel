@@ -6,7 +6,7 @@ Repair kits, the Cozy Sleeping Bag and a hearthstone cooldown of your choice.
 - **Cozy Sleeping Bag:** lay it down outdoors and sleep in it: +1% experience per minute (up to 3%) for an hour, and some rested experience. It comes from a two-quest chain at any innkeeper (level 14+): 8 Wool Cloth, then 4 Light Leather and 2 Coarse Thread.
 
 - **Hearthstone cooldown:** each player picks theirs at any innkeeper ("Hearthstone cooldown") or with
-  `.hearthstone <minutes>`: no cooldown, 15, 30 (the game's own, and the default), 45 or 60 minutes. It applies from
+  `.temucraft hearthstone <minutes>`: no cooldown, 15, 30 (the game's own, and the default), 45 or 60 minutes. It applies from
   the next use, to the Hearthstone and every item that shares its cooldown (The Innkeeper's Daughter, Ethereal
   Portal...). The choices and the default are in the config. The tooltip still says 30 minutes; the cooldown shown on
   the button is the chosen one.
@@ -61,7 +61,7 @@ Repair kits, the Cozy Sleeping Bag and a hearthstone cooldown of your choice.
 ## Works with other modules
 
 - Every innkeeper becomes a quest giver: another module that changes innkeepers' `npcflag` may undo it, and vice versa.
-- Innkeepers with a script of their own keep their own menu (no hearthstone option there; `.hearthstone` works).
+- Innkeepers with a script of their own keep their own menu (no hearthstone option there; `.temucraft hearthstone` works).
 - Uses existing reagents (Wool Cloth 2592, Light Leather 2318, Coarse Thread 2320).
 - Stones and Scrolls of Homecoming are on every innkeeper vendor: a module that rebuilds innkeepers' `npc_vendor` lists may drop them.
 - The client needs this module's `Spell.dbc` and `SpellCategory.dbc` rows (or the all-in-one patch with them): without them the items still work on the server, but the client shows no cooldown and no spell text.
