@@ -113,3 +113,25 @@ Temucraft.Travel.Atlas.Enable = 1
 #        Default:     610146
 
 Temucraft.Travel.Atlas.FirstItem = 610146
+
+#
+#    Temucraft.Travel.Waygate.Enable
+#        Description: Hearthbound Waygate, Fel Waygate and Wayfarer's Beacon items. A waygate places a portal that takes
+#                     everyone who clicks it to their own hearthstone spot; the beacon places a beam of light.
+#        Default:     1
+
+Temucraft.Travel.Waygate.Enable = 1
+
+#
+#    Temucraft.Travel.Waygate.Seconds
+#        Description: How long a waygate portal stays open, in seconds. Its cooldown is the item's spellcooldown_1.
+#        Default:     60
+
+Temucraft.Travel.Waygate.Seconds = 60
+
+#
+#    Temucraft.Travel.Beacon.Seconds
+#        Description: How long the Wayfarer's Beacon beam stays, in seconds.
+#        Default:     300
+
+Temucraft.Travel.Beacon.Seconds = 300

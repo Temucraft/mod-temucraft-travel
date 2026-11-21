@@ -18,4 +18,10 @@ INSERT INTO `module_string` (`module`, `id`, `string`) VALUES
 ('mod-temucraft-travel', 44, 'Fly in Flight Form ({}% of the price).'),
 ('mod-temucraft-travel', 60, 'You can''t use this here.'),
 ('mod-temucraft-travel', 61, '|cff66ccffSkyreader''s Atlas:|r {} new flight paths learned.'),
-('mod-temucraft-travel', 62, '|cff66ccffSkyreader''s Atlas:|r you know every flight path there already.');
+('mod-temucraft-travel', 62, '|cff66ccffSkyreader''s Atlas:|r you know every flight path there already.'),
+('mod-temucraft-travel', 63, 'Not during a fight.'),
+('mod-temucraft-travel', 64, 'That isn''t ready yet ({} min left).'),
+('mod-temucraft-travel', 65, 'There''s no room for it here.'),
+('mod-temucraft-travel', 66, '|cff66ccff{}:|r a way home stands open for {} seconds. Anyone who steps through goes to their own hearthstone spot.'),
+('mod-temucraft-travel', 67, '|cff66ccffWayfarer''s Beacon:|r a beam of light marks this spot for {} minutes.'),
+('mod-temucraft-travel', 68, 'The way home won''t open while you fight.');

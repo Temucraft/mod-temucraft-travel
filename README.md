@@ -102,3 +102,17 @@ Four items (610146 Eastern Kingdoms, 610147 Kalimdor, 610148 Outland, 610149 Nor
 path of your faction on that continent (quest and transport nodes stay out). Sold on the Temucraft Curator's Helpers
 list for 100 tokens, in the Vanity window under "Travel", and mailed for the Explore Eastern Kingdoms, Kalimdor and
 Outland achievements. RBAC permission 103351 (linked to the player roles).
+
+## Waygates and Wayfarer's Beacon
+
+- **Hearthbound Waygate** (610150) and **Fel Waygate** (610151, a fel portal look): place a portal (objects 608950
+  and 608951) for 1 minute. Everyone who clicks it goes to their own hearthstone spot (done on the server, no client
+  spell). 30 minute cooldown of their own, shared by both; the hearthstone cooldown is not touched. 200 tokens each.
+- **Wayfarer's Beacon** (610152): a tall beam of light (object 608952) on the spot for 5 minutes, to mark a meeting
+  place. 5 minute cooldown. 50 tokens.
+
+Sold on the Temucraft Curator's Helpers list (vendor 608011); in the Vanity window under "Travel" (waygates) and
+"Toys" (beacon). Not in battlegrounds, arenas or fights. RBAC permissions 103352 (waygates) and 103353 (beacon),
+linked to the player roles. `Temucraft.Travel.Waygate.Enable`, `Temucraft.Travel.Waygate.Seconds`,
+`Temucraft.Travel.Beacon.Seconds`. The item spells (stock dummy spells 36177 and 49375) are never cast: they only
+carry the cooldown so the client shows it.
