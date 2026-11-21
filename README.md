@@ -16,8 +16,11 @@ Repair kits, the Cozy Sleeping Bag and a hearthstone cooldown of your choice.
   Legacy perk Swift Flights, or any spell you list (`Temucraft.Travel.SwiftFlights.Spells`), on top of the server's
   flight speed. Other modules can add a bonus through `src/TemucraftFlightBonus.h`.
 - **Hearthstone keepsakes:** hearthstones with their own look, sold by innkeepers (account-bound, one each): Pocket
-  Portal, Innkeeper's Keepsake, Shard of the Dark Portal, Lich-touched Stone, and the Ethereal Portal. They share the
-  hearthstone's cooldown (and the length each player picked).
+  Portal, Innkeeper's Keepsake, Shard of the Dark Portal, Lich-touched Stone, Arcanist's Waystone, Death Gate Shard,
+  Ember of the Imp, Voidtouched Stone, Lightbound Stone, Spiritwalker's Stone, and the Ethereal Portal. They share the
+  hearthstone's cooldown (and the length each player picked), and are in the Vanity window under "Travel". The new ones
+  are copies of Hearthstone with another class spell's casting look (spells 97180-97186, `tools/build_keepsakes.py`
+  writes the server `spell_dbc` rows and the client rows in `client/patch-T.MPQ`).
 - **Stones and Scrolls of Homecoming:** one of each for every capital: Stormwind, Ironforge, Darnassus, The Exodar
   (Alliance), Orgrimmar, Undercity, Thunder Bluff, Silvermoon (Horde), and Dalaran (level 68) and Shattrath (level 58)
   for both. Use one and after 10 seconds (like a hearthstone: moving or being hit stops it) you are in that city, by
