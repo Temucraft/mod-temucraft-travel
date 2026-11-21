@@ -1,7 +1,7 @@
--- mod-temucraft-travel: its player commands (all under .temucraft) as RBAC permissions 103350-103399. Linked to the stock player
--- role 195 and the Temucraft player role 1010, so every account has them by default. To take one away, remove its
--- link here (or deny it per account with .rbac account deny <account> <id>); to give it to staff only, link it to
--- 1011-1014 instead.
+-- mod-temucraft-travel: its commands (all under .temucraft) as RBAC permissions 103350-103399. Every command is admin only by
+-- default: linked to the administrator roles 192 and 1014. To give one to players, link it to 195 and 1010 here (or
+-- grant it per account with .rbac account grant <account> <id>). "Temucraft: use ..." permissions are not
+-- commands: they stay linked to the player roles so the items keep working.
 DELETE FROM `rbac_linked_permissions` WHERE `linkedId` BETWEEN 103350 AND 103399;
 DELETE FROM `rbac_permissions` WHERE `id` BETWEEN 103350 AND 103399;
 INSERT INTO `rbac_permissions` (`id`, `name`) VALUES
@@ -10,8 +10,8 @@ INSERT INTO `rbac_permissions` (`id`, `name`) VALUES
 (103352, 'Temucraft: use the Hearthbound and Fel Waygates'),
 (103353, 'Temucraft: use Wayfarer''s Beacon');
 INSERT INTO `rbac_linked_permissions` (`id`, `linkedId`) VALUES
-(195, 103350),
-(1010, 103350),
+(192, 103350),
+(1014, 103350),
 (195, 103351),
 (1010, 103351),
 (195, 103352),
