@@ -12,6 +12,7 @@
 // Druids in Flight Form get "Fly in Flight Form" instead: the flight costs half (Temucraft.Travel.FlightFormFare %) and
 // they are back in Flight Form when they land.
 
+#include "TemucraftLocked.h"
 #include "Config.h"
 #include "GameTime.h"
 #include "Creature.h"
@@ -38,7 +39,7 @@ namespace
 
     // druids who chose "Fly in Flight Form": the form spell to give back on landing, until when the offer stands
     struct Fare { uint32 spell = 0; uint32 until = 0; bool flying = false; };
-    std::unordered_map<uint32, Fare> fares;
+    Temucraft::LockedMap<uint32, Fare> fares;
 
     uint32 FlightFormSpell(Player* p)
     {

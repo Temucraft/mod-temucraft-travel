@@ -12,6 +12,7 @@
 // While a player stands on the ground their spot is remembered (every second). When they are falling with no floor
 // anywhere below them but ground above them, they are under the map: they go back to that spot.
 
+#include "TemucraftLocked.h"
 #include "Config.h"
 #include "Map.h"
 #include "Player.h"
@@ -31,7 +32,7 @@ namespace
         uint32 timer = 0;
         bool known = false;
     };
-    std::unordered_map<uint32, Spot> spots;
+    Temucraft::LockedMap<uint32, Spot> spots;
 
     bool UnderMap(Player* player)
     {

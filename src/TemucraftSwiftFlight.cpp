@@ -11,6 +11,7 @@
 // TemucraftFlightBonus.h). A moment after a flight starts (or goes on after a loading screen) its path is set off again
 // at the faster speed; the flight's stops, events and arrival work as before.
 
+#include "TemucraftLocked.h"
 #include "Config.h"
 #include "MotionMaster.h"
 #include "MoveSpline.h"
@@ -109,7 +110,7 @@ public:
     void OnPlayerLogout(Player* p) override { timers.erase(p->GetGUID().GetCounter()); }
 
 private:
-    std::unordered_map<uint32, uint32> timers;
+    Temucraft::LockedMap<uint32, uint32> timers;
 };
 
 void AddTemucraftSwiftFlightScripts()
