@@ -72,6 +72,16 @@ Temucraft.Travel.Hearthstone.AllowChoice = 1
 Temucraft.Travel.SafeLanding = 1
 
 #
+#    Temucraft.Travel.SafeLanding.MinFallTime
+#    Temucraft.Travel.SafeLanding.MinDrop
+#        Description: A fall only counts once it has lasted this long (milliseconds) and gone this far down (yards).
+#                     Jumps and short drops, in caves too, never put you back.
+#        Default:     2000, 30
+
+Temucraft.Travel.SafeLanding.MinFallTime = 2000
+Temucraft.Travel.SafeLanding.MinDrop = 30
+
+#
 #    Temucraft.Travel.SwiftFlights
 #        Description: Flight paths go faster for players with a flight speed bonus, on top of the server's
 #                     Rate.TaxiFlightSpeed. Spells: "spell:percent" pairs counted while the player knows the spell or
