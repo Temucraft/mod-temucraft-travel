@@ -89,6 +89,7 @@ public:
         spot.timer += diff;
         if (spot.timer < 500)
             return;
+        uint32 const elapsed = spot.timer;                  // can be more than 500 on a slow map update
         spot.timer = 0;
 
         // open world only: some dungeon and raid fights are meant to be fallen out of
@@ -124,7 +125,7 @@ public:
         // count how long this fall has lasted and how far it went
         if (spot.fallTime == 0 || player->GetPositionZ() > spot.fallTop)
             spot.fallTop = player->GetPositionZ();
-        spot.fallTime += 500;
+        spot.fallTime += elapsed;
         if (spot.fallTime < minFallTime || spot.fallTop - player->GetPositionZ() < minDrop)
             return;
 
