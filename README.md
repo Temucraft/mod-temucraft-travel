@@ -72,7 +72,7 @@ Repair kits, the Cozy Sleeping Bag and a hearthstone cooldown of your choice.
 
 ## Works with other modules
 
-- Flight paths: the flight map's extra route nodes are told to the client with addon messages (prefix `TTX`); without the client patch they look like normal flight points, and picking one is refused ("you haven't been there").
+- Flight paths: the flight map's extra route nodes are told to the client with addon messages (prefix `TTX`); without the client patch they look like normal flight points, and picking one is refused ("you haven't been there"). Each time a flight master's map opens the server whispers `B`, then `N~name~name...` (the nodes' TaxiNodes.dbc names in the player's locale, about 200 characters per message), then `E`, before the map itself; the client only uses the list once `E` came. A route may pass through those nodes only from the flight master that last sent them, and must start and end at known nodes. Existing characters' starting flight points are looked up asynchronously at login.
 - Every innkeeper becomes a quest giver: another module that changes innkeepers' `npcflag` may undo it, and vice versa.
 - Innkeepers with a script of their own keep their own menu (no hearthstone option there; `.temucraft hearthstone` works).
 - Uses existing reagents (Wool Cloth 2592, Light Leather 2318, Coarse Thread 2320).
