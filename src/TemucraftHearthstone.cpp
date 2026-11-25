@@ -36,6 +36,12 @@ namespace
     constexpr uint32 SPELL_HEARTHSTONE = 8690;
     constexpr uint32 SENDER_HEARTH = 0x4EA7;
     constexpr uint32 ACTION_MENU = 1000;   // other actions are a number of minutes
+    // The core runs the creature's AI (SmartAI) on every gossip pick before any script, keyed by (menu id, item index).
+    // Innkeepers' SmartAI casts Trick or Treat on (their menu, item 0), and the auto index of an item added by a
+    // script fills the gap the hidden Hallow's End option leaves at 0. So our item takes the last index, and the
+    // choices go out under a menu id of their own, which no SmartAI row uses.
+    constexpr uint32 ITEM_HEARTH = GOSSIP_MAX_MENU_ITEMS - 1;
+    constexpr uint32 MENU_HEARTH = 0x7FFF4EA7;
 
     enum Text : uint32
     {
@@ -173,8 +179,8 @@ public:
         if (!hearth.enable || !hearth.allowChoice || hearth.choices.size() < 2 || !IsPlainInnkeeper(creature))
             return false;
         player->PrepareGossipMenu(creature, creature->GetCreatureTemplate()->GossipMenuId, true);
-        AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, Acore::StringFormat(Say(player, T_GOSSIP_MENU,
-            "Hearthstone cooldown ({})."), Label(player, MinutesOf(player))), SENDER_HEARTH, ACTION_MENU);
+        player->PlayerTalkClass->GetGossipMenu().AddMenuItem(ITEM_HEARTH, GOSSIP_ICON_INTERACT_1, Acore::StringFormat(Say(player,
+            T_GOSSIP_MENU, "Hearthstone cooldown ({})."), Label(player, MinutesOf(player))), SENDER_HEARTH, ACTION_MENU, "", 0);
         player->SendPreparedGossip(creature);
         return true;
     }
@@ -186,6 +192,7 @@ public:
         if (action == ACTION_MENU)
         {
             ClearGossipMenuFor(player);
+            player->PlayerTalkClass->GetGossipMenu().SetMenuId(MENU_HEARTH);
             uint32 const current = MinutesOf(player);
             for (uint32 minutes : hearth.choices)
                 AddGossipItemFor(player, GOSSIP_ICON_CHAT, Acore::StringFormat(Say(player, T_GOSSIP_CHOICE, "{}{}"),
