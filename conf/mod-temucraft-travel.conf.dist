@@ -184,3 +184,42 @@ Temucraft.Travel.Skyriding.Vigor = 6
 Temucraft.Travel.Skyriding.VigorRegen = 15
 Temucraft.Travel.Skyriding.ThrillRegen = 5
 Temucraft.Travel.Skyriding.Surge = 0.6
+
+#
+#    Temucraft.Travel.Flight.FlyThrough
+#        Description: Retail-style flight paths: at a flight master you can fly to any flight point you know on this
+#                     continent, through the flight points of your faction you don't know yet. Those show on the
+#                     flight map as small route dots (with the Temucraft client patch) and can't be picked; flying
+#                     through one does not teach it. Needs the core hooks OnPlayerSendTaxiMenu and
+#                     OnPlayerCanFlyThroughTaxiNode.
+#        Default:     1
+
+Temucraft.Travel.Flight.FlyThrough = 1
+
+#
+#    Temucraft.Travel.Flight.StartingNodes
+#        Description: Every character knows its race's capital flight point and its faction's main capital
+#                     (StartingNodes.Alliance / .Horde), given at its first login.
+#        Default:     1
+#
+#    Temucraft.Travel.Flight.StartingNodes.Existing
+#        Description: Characters made before this was on get them too, once, at their next login.
+#        Default:     1
+#
+#    Temucraft.Travel.Flight.StartingNodes.Alliance
+#    Temucraft.Travel.Flight.StartingNodes.Horde
+#        Description: The faction's main capital (TaxiNodes.dbc id). 2 = Stormwind, 23 = Orgrimmar.
+#        Default:     2, 23
+#
+#    Temucraft.Travel.Flight.StartingNodes.Races
+#        Description: "race:node,..." the race's own capital (a race may be listed more than once). Races not listed
+#                     (the allied and custom races: none of their home cities has a flight point in our data) get
+#                     only their faction's capital. 2 Stormwind, 6 Ironforge, 27 Rut'theran Village (Darnassus),
+#                     94 The Exodar, 23 Orgrimmar, 11 Undercity, 22 Thunder Bluff, 82 Silvermoon City.
+#        Default:     "1:2,3:6,4:27,5:11,6:22,7:6,10:82,11:94"
+
+Temucraft.Travel.Flight.StartingNodes = 1
+Temucraft.Travel.Flight.StartingNodes.Existing = 1
+Temucraft.Travel.Flight.StartingNodes.Alliance = 2
+Temucraft.Travel.Flight.StartingNodes.Horde = 23
+Temucraft.Travel.Flight.StartingNodes.Races = "1:2,3:6,4:27,5:11,6:22,7:6,10:82,11:94"

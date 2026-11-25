@@ -8,6 +8,7 @@ void AddTemucraftHomecomingScripts();
 void AddTemucraftAtlasScripts();
 void AddTemucraftWaygateScripts();
 void AddTemucraftSkyridingScripts();
+void AddTemucraftFlightPathsScripts();
 
 void Addmod_temucraft_travelScripts()
 {
@@ -20,4 +21,5 @@ void Addmod_temucraft_travelScripts()
     AddTemucraftAtlasScripts();
     AddTemucraftWaygateScripts();
     AddTemucraftSkyridingScripts();
+    AddTemucraftFlightPathsScripts();
 }

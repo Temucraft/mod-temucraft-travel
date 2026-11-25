@@ -30,6 +30,14 @@ Repair kits, the Cozy Sleeping Bag and a hearthstone cooldown of your choice.
   a vendor; each player only sees their own faction's (every race of the faction, our custom races too) and the two
   for both. A faction change swaps them for the other side's. They are vanity items: with mod-temucraft-account-wide,
   one bought on any character is unlocked for the whole account and can be summoned again from the Vanity window.
+- **Retail-style flight paths:** at a flight master you can fly to any flight point you know on this continent, even
+  when you don't know the ones in between: the flight goes through your faction's flight points on the way. Those
+  show on the flight map as small grey dots (with the Temucraft client patch, `TemucraftTaxi.lua`) and can't be
+  picked; flying through one does not teach it, you still have to visit it (`Temucraft.Travel.Flight.FlyThrough`).
+  Needs the core hooks `OnPlayerSendTaxiMenu` and `OnPlayerCanFlyThroughTaxiNode` (Temucraft core).
+- **Starting flight points:** every character knows its race's capital and its faction's main capital (Stormwind or
+  Orgrimmar) from its first login; characters made before get them once at their next login
+  (`Temucraft.Travel.Flight.StartingNodes*`; the race table is in the config).
 
 ## Install
 
@@ -58,11 +66,13 @@ Repair kits, the Cozy Sleeping Bag and a hearthstone cooldown of your choice.
 | world | `player_factionchange_items` | Alliance and Horde Stones and Scrolls swap on a faction change |
 | world | `mod_temucraft_vanity_item` | 610030-610049 (made here if missing; read by mod-temucraft-account-wide) |
 | characters | `mod_temucraft_character_setting` (setting `hearthstone`) | per character: hearthstone cooldown |
+| characters | `mod_temucraft_travel_flight_start` | characters given their starting flight points |
 | client | `Spell.dbc` | 95020, 97151-97170 |
 | client | `SpellCategory.dbc` | 1820, 1821 |
 
 ## Works with other modules
 
+- Flight paths: the flight map's extra route nodes are told to the client with addon messages (prefix `TTX`); without the client patch they look like normal flight points, and picking one is refused ("you haven't been there").
 - Every innkeeper becomes a quest giver: another module that changes innkeepers' `npcflag` may undo it, and vice versa.
 - Innkeepers with a script of their own keep their own menu (no hearthstone option there; `.temucraft hearthstone` works).
 - Uses existing reagents (Wool Cloth 2592, Light Leather 2318, Coarse Thread 2320).
