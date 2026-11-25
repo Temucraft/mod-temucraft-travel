@@ -24,6 +24,7 @@
 #include "DatabaseEnv.h"
 #include "Player.h"
 #include "ScriptMgr.h"
+#include "StringFormat.h"
 #include "TemucraftAddonMessage.h"
 #include "TemucraftLocked.h"
 #include "WorldSession.h"
@@ -253,15 +254,29 @@ public:
         if (!startNodes)
             return;
         uint32 const guid = player->GetGUID().GetCounter();
-        if (!player->HasAtLoginFlag(AT_LOGIN_FIRST))
+        if (player->HasAtLoginFlag(AT_LOGIN_FIRST))
         {
-            if (!startNodesExisting)
-                return;
-            if (CharacterDatabase.Query("SELECT 1 FROM `mod_temucraft_travel_flight_start` WHERE `guid` = {}", guid))
-                return;
+            GiveStartNodes(player);
+            CharacterDatabase.Execute("INSERT IGNORE INTO `mod_temucraft_travel_flight_start` (`guid`) VALUES ({})", guid);
+            return;
         }
-        GiveStartNodes(player);
-        CharacterDatabase.Execute("INSERT IGNORE INTO `mod_temucraft_travel_flight_start` (`guid`) VALUES ({})", guid);
+        if (!startNodesExisting)
+            return;
+        // existing characters: ask the database without holding up the login (world thread); the answer comes back
+        // on this session's own update
+        WorldSession* session = player->GetSession();
+        ObjectGuid const playerGuid = player->GetGUID();
+        session->GetQueryProcessor().AddCallback(CharacterDatabase.AsyncQuery(Acore::StringFormat(
+            "SELECT 1 FROM `mod_temucraft_travel_flight_start` WHERE `guid` = {}", guid)).WithCallback([session, playerGuid](QueryResult result)
+        {
+            if (result)
+                return;
+            Player* player = session->GetPlayer();
+            if (!player || player->GetGUID() != playerGuid)
+                return;
+            GiveStartNodes(player);
+            CharacterDatabase.Execute("INSERT IGNORE INTO `mod_temucraft_travel_flight_start` (`guid`) VALUES ({})", playerGuid.GetCounter());
+        }));
     }
 
     void OnPlayerLogout(Player* player) override { transit.erase(player->GetGUID().GetCounter()); }
