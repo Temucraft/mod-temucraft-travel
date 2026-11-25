@@ -145,3 +145,42 @@ Temucraft.Travel.Waygate.Seconds = 60
 #        Default:     300
 
 Temucraft.Travel.Beacon.Seconds = 300
+
+#
+#    Temucraft.Travel.Skyriding.Enable
+#        Description: Skyriding (prototype): with .temucraft skyriding on, a flying mount gains speed when diving and
+#                     loses it when climbing, and Vigor pays for .temucraft skyriding surge (a burst of speed) and
+#                     .temucraft skyriding ascent (a launch upwards). Done on the server, so it feels stepped with lag.
+#                     The command is admin only until linked to the player roles (db-auth SQL, permission 103354).
+#        Default:     1
+
+Temucraft.Travel.Skyriding.Enable = 1
+
+#
+#    Temucraft.Travel.Skyriding.Dive
+#    Temucraft.Travel.Skyriding.Drag
+#    Temucraft.Travel.Skyriding.MinSpeed
+#    Temucraft.Travel.Skyriding.MaxSpeed
+#        Description: Dive: speed gained per second in a straight dive (as a flight speed rate, 1 = run speed). Drag:
+#                     share of the difference to the mount's own speed that goes away per second. MinSpeed and
+#                     MaxSpeed: limits, as a share of the mount's own speed.
+#        Default:     1.2, 0.25, 0.6, 2.2
+
+Temucraft.Travel.Skyriding.Dive = 1.2
+Temucraft.Travel.Skyriding.Drag = 0.25
+Temucraft.Travel.Skyriding.MinSpeed = 0.6
+Temucraft.Travel.Skyriding.MaxSpeed = 2.2
+
+#
+#    Temucraft.Travel.Skyriding.Vigor
+#    Temucraft.Travel.Skyriding.VigorRegen
+#    Temucraft.Travel.Skyriding.ThrillRegen
+#    Temucraft.Travel.Skyriding.Surge
+#        Description: Vigor points; seconds per point while mounted; seconds per point while flying faster than 1.5x
+#                     the mount's speed; how much Surge Forward adds (share of the mount's speed).
+#        Default:     6, 15, 5, 0.6
+
+Temucraft.Travel.Skyriding.Vigor = 6
+Temucraft.Travel.Skyriding.VigorRegen = 15
+Temucraft.Travel.Skyriding.ThrillRegen = 5
+Temucraft.Travel.Skyriding.Surge = 0.6

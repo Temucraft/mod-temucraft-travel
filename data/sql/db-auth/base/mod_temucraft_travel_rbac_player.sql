@@ -8,7 +8,8 @@ INSERT INTO `rbac_permissions` (`id`, `name`) VALUES
 (103350, 'Command: temucraft hearthstone'),
 (103351, 'Temucraft: use Skyreader''s Atlas'),
 (103352, 'Temucraft: use the Hearthbound and Fel Waygates'),
-(103353, 'Temucraft: use Wayfarer''s Beacon');
+(103353, 'Temucraft: use Wayfarer''s Beacon'),
+(103354, 'Command: temucraft skyriding');
 INSERT INTO `rbac_linked_permissions` (`id`, `linkedId`) VALUES
 (192, 103350),
 (1014, 103350),
@@ -17,4 +18,6 @@ INSERT INTO `rbac_linked_permissions` (`id`, `linkedId`) VALUES
 (195, 103352),
 (1010, 103352),
 (195, 103353),
-(1010, 103353);
+(1010, 103353),
+(192, 103354),
+(1014, 103354);

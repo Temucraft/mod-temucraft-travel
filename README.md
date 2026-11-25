@@ -116,3 +116,23 @@ Sold on the Temucraft Curator's Helpers list (vendor 608011); in the Vanity wind
 linked to the player roles. `Temucraft.Travel.Waygate.Enable`, `Temucraft.Travel.Waygate.Seconds`,
 `Temucraft.Travel.Beacon.Seconds`. The item spells (stock dummy spells 36177 and 49375) are never cast: they only
 carry the cooldown so the client shows it.
+
+## Skyriding (prototype, 2026-11-25)
+
+Dragonflight-style flying on normal flying mounts, done on the server (`src/TemucraftSkyriding.cpp`). Untested in game.
+
+- `.temucraft skyriding` turns it on or off for the character (saved in the characters table `mod_temucraft_skyriding`).
+- While on and flying on a flying mount, the server reads the player's pitch every 250 ms: diving builds speed,
+  climbing bleeds it, and the speed settles back towards the mount's own (Dive, Drag). Limits: 0.6x to 2.2x the
+  mount's speed. Leaving the air, dismounting, a taxi or a teleport puts the normal speed back.
+- **Vigor** (6): `.temucraft skyriding surge` (+0.6x the mount's speed at once) and `.temucraft skyriding ascent`
+  (a launch upwards and a little forward) cost 1 each. One point comes back every 15 s while mounted, every 5 s while
+  flying faster than 1.5x (Thrill of the Skies). Vigor shows as a bar of blue marks in the middle of the screen when
+  it changes. Bind the two commands to macros.
+- Permission 103354 (Command: temucraft skyriding) is admin only, like every Temucraft command, until it is linked to
+  the player roles 195 and 1010.
+- Config: `Temucraft.Travel.Skyriding.*` (Enable, Dive, Drag, MinSpeed, MaxSpeed, Vigor, VigorRegen, ThrillRegen,
+  Surge). SQL: `db-characters/base/mod_temucraft_skyriding.sql`, `db-auth` RBAC, texts 69-74.
+- Limits: speed changes travel through the server, so with lag the speed feels stepped; the smooth version needs the
+  client built from source. Reference for the retail rules: RoleplayCore's `spell_dragonriding.cpp` (Vigor, Thrill of
+  the Skies, Surge Forward, Skyward Ascent, Whirling Surge, Static Charge).

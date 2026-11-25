@@ -24,4 +24,10 @@ INSERT INTO `module_string` (`module`, `id`, `string`) VALUES
 ('mod-temucraft-travel', 65, 'There''s no room for it here.'),
 ('mod-temucraft-travel', 66, '|cff66ccff{}:|r a way home stands open for {} seconds. Anyone who steps through goes to their own hearthstone spot.'),
 ('mod-temucraft-travel', 67, '|cff66ccffWayfarer''s Beacon:|r a beam of light marks this spot for {} minutes.'),
-('mod-temucraft-travel', 68, 'The way home won''t open while you fight.');
+('mod-temucraft-travel', 68, 'The way home won''t open while you fight.'),
+('mod-temucraft-travel', 69, '|cff66ccffSkyriding on:|r dive to gain speed, climb to lose it. Bind .temucraft skyriding surge and .temucraft skyriding ascent to macros.'),
+('mod-temucraft-travel', 70, '|cff66ccffSkyriding off:|r your flying mounts fly as usual.'),
+('mod-temucraft-travel', 71, 'Only while skyriding: turn it on with .temucraft skyriding and fly on a flying mount.'),
+('mod-temucraft-travel', 72, 'Not enough vigor.'),
+('mod-temucraft-travel', 73, 'Vigor {} {}/{}'),
+('mod-temucraft-travel', 74, 'Skyriding is turned off on this server.');
