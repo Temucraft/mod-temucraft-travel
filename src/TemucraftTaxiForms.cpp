@@ -32,6 +32,11 @@ namespace
     constexpr uint32 SENDER_TAXI_FORM = 0x7A71;
     enum Text : uint32 { T_FORM_OPTION = 40, T_FORM_CONFIRM, T_MOUNT_OPTION, T_MOUNT_CONFIRM, T_FLIGHT_FORM };
     constexpr uint32 ACTION_LEAVE = 0, ACTION_FLIGHT_FORM = 1;
+    // The core runs the flight master's SmartAI on every gossip pick before any script, keyed by (menu id, item
+    // index), and an auto index fills the gap a hidden (quest-only) option leaves: on Vlagga Freyfeather, Greer
+    // Orehammer and others our item then set off the bombing run / Stair of Destiny flight. So it takes a fixed index
+    // near the top that no DB option uses (the hearthstone option at innkeepers has GOSSIP_MAX_MENU_ITEMS - 1).
+    constexpr uint32 ITEM_TAXI_FORM = GOSSIP_MAX_MENU_ITEMS - 2;
     char const* Say(Player* p, uint32 id, char const* fallback) { return TemucraftModuleText(MODULE, p, id, fallback); }
 
     bool enabled = true;
@@ -95,18 +100,20 @@ public:
         if (!form && !mounted)
             return false;
         player->PrepareGossipMenu(creature, creature->GetCreatureTemplate()->GossipMenuId, true);
+        GossipMenu& menu = player->PlayerTalkClass->GetGossipMenu();
         if (form && FlightFormSpell(player) && flightFormFare < 100.0f)
-            AddGossipItemFor(player, GOSSIP_ICON_TAXI, Acore::StringFormat(Say(player, T_FLIGHT_FORM, "Fly in Flight Form ({}% of the price)."),
-                uint32(flightFormFare)), SENDER_TAXI_FORM, ACTION_FLIGHT_FORM);
+            menu.AddMenuItem(ITEM_TAXI_FORM, GOSSIP_ICON_TAXI, Acore::StringFormat(Say(player, T_FLIGHT_FORM, "Fly in Flight Form ({}% of the price)."),
+                uint32(flightFormFare)), SENDER_TAXI_FORM, ACTION_FLIGHT_FORM, "", 0);
         else if (form)
         {
             std::string const name = FormName(player);
-            AddGossipItemFor(player, GOSSIP_ICON_TAXI, Acore::StringFormat(Say(player, T_FORM_OPTION, "Leave {} and fly."), name),
+            menu.AddMenuItem(ITEM_TAXI_FORM, GOSSIP_ICON_TAXI, Acore::StringFormat(Say(player, T_FORM_OPTION, "Leave {} and fly."), name),
                 SENDER_TAXI_FORM, ACTION_LEAVE, Acore::StringFormat(Say(player, T_FORM_CONFIRM, "Flying will remove your {}. Continue?"), name), 0, false);
         }
         else
-            AddGossipItemFor(player, GOSSIP_ICON_TAXI, Say(player, T_MOUNT_OPTION, "Dismount and fly."),
+            menu.AddMenuItem(ITEM_TAXI_FORM, GOSSIP_ICON_TAXI, Say(player, T_MOUNT_OPTION, "Dismount and fly."),
                 SENDER_TAXI_FORM, ACTION_LEAVE, Say(player, T_MOUNT_CONFIRM, "Flying will dismount you. Continue?"), 0, false);
+
         player->SendPreparedGossip(creature);
         return true;
     }
