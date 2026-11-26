@@ -288,9 +288,24 @@ public:
     }
 };
 
+// a deleted character's skyriding choice goes with it
+// OnPlayerDeleteFromDB: only when the character is really removed (not a CharDelete.Method = 1 unlink, which can be
+// restored), and in the same transaction as the core's own deletes.
+class TemucraftSkyriding_Delete : public PlayerScript
+{
+public:
+    TemucraftSkyriding_Delete() : PlayerScript("TemucraftSkyriding_Delete", { PLAYERHOOK_ON_DELETE_FROM_DB }) { }
+
+    void OnPlayerDeleteFromDB(CharacterDatabaseTransaction trans, uint32 guid) override
+    {
+        trans->Append("DELETE FROM `mod_temucraft_skyriding` WHERE `guid` = {}", guid);
+    }
+};
+
 void AddTemucraftSkyridingScripts()
 {
     new TemucraftSkyriding_Player();
     new TemucraftSkyriding_Commands();
     new TemucraftSkyriding_World();
+    new TemucraftSkyriding_Delete();
 }
