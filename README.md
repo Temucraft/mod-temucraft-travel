@@ -147,6 +147,9 @@ Dragonflight-style flying on normal flying mounts, done on the server (`src/Temu
   the player roles 195 and 1010.
 - Config: `Temucraft.Travel.Skyriding.*` (Enable, Dive, Drag, MinSpeed, MaxSpeed, Vigor, VigorRegen, ThrillRegen,
   Surge). SQL: `db-characters/base/mod_temucraft_skyriding.sql`, `db-auth` RBAC, texts 69-74.
+- A character deleted for good (`OnPlayerDeleteFromDB`, in the same transaction as the core's own deletes; not a `CharDelete.Method = 1` unlink, which can be restored) takes its `mod_temucraft_skyriding` row with it.
+  `db-characters/base/mod_temucraft_travel_character_cleanup.sql` removes rows of characters deleted before; safe to
+  run again.
 - Limits: speed changes travel through the server, so with lag the speed feels stepped; the smooth version needs the
   client built from source. Reference for the retail rules: RoleplayCore's `spell_dragonriding.cpp` (Vigor, Thrill of
   the Skies, Surge Forward, Skyward Ascent, Whirling Surge, Static Charge).
