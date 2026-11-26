@@ -7,8 +7,10 @@
 
 // Choices a player made in mod-temucraft-player-settings that other Temucraft modules read.
 // Stored on the player (CustomData), so a module that reads them still builds and works without the settings module.
-// (Same file in mod-temucraft-player-settings, mod-temucraft and every module that asks before a teleport;
-// mod-temucraft-classes has a copy of the pushback part only.)
+// One header, copied into every module that uses it (each module builds on its own): mod-temucraft-player-settings,
+// mod-temucraft, mod-temucraft-classes and every module that asks before a teleport. The copies must stay identical
+// (all modules share one include path): change the one in mod-temucraft-player-settings, then run
+// _tools\check_shared_headers.py --fix.
 #pragma once
 
 #include "DataMap.h"
