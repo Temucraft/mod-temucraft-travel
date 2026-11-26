@@ -153,3 +153,9 @@ Dragonflight-style flying on normal flying mounts, done on the server (`src/Temu
 - Limits: speed changes travel through the server, so with lag the speed feels stepped; the smooth version needs the
   client built from source. Reference for the retail rules: RoleplayCore's `spell_dragonriding.cpp` (Vigor, Thrill of
   the Skies, Surge Forward, Skyward Ascent, Whirling Surge, Static Charge).
+
+## Shared headers
+
+`TemucraftPlayerSettings.h`, `TemucraftModuleText.h`, `TemucraftAddonMessage.h` and `TemucraftLocked.h` in `src/` are shared with other Temucraft modules and must stay the same everywhere (all modules
+share one include path). `_tools\check_shared_headers.py` checks the copies (`--fix` copies the canonical one over
+them). The canonical `TemucraftPlayerSettings.h` is in mod-temucraft-player-settings, `TemucraftModuleText.h` is in mod-temucraft, `TemucraftAddonMessage.h` is in mod-temucraft-client-version, `TemucraftLocked.h` is in mod-temucraft-classes. Change the canonical copy, then run the check with `--fix`.
