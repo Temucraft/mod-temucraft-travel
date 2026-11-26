@@ -127,6 +127,10 @@ linked to the player roles. `Temucraft.Travel.Waygate.Enable`, `Temucraft.Travel
 `Temucraft.Travel.Beacon.Seconds`. The item spells (stock dummy spells 36177 and 49375) are never cast: they only
 carry the cooldown so the client shows it.
 
+Clicking a waygate first asks "Teleport to: <your hearthstone spot>" (Accept / Cancel), like every portal
+(mod-temucraft answers Accept, `TemucraftPlayerSettings.h`); players who turned "Ask before teleports and portals"
+off in `.temucraft settings` go at once.
+
 ## Skyriding (prototype, 2026-11-25)
 
 Dragonflight-style flying on normal flying mounts, done on the server (`src/TemucraftSkyriding.cpp`). Untested in game.

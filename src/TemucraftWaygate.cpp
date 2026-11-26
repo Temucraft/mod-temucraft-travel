@@ -17,6 +17,7 @@
 
 #include "Chat.h"
 #include "Config.h"
+#include "DBCStores.h"
 #include "GameObject.h"
 #include "GameObjectScript.h"
 #include "Item.h"
@@ -25,6 +26,7 @@
 #include "Player.h"
 #include "ScriptMgr.h"
 #include "TemucraftModuleText.h"
+#include "TemucraftPlayerSettings.h"
 #include "WorldPacket.h"
 #include "WorldSession.h"
 #include <cmath>
@@ -124,7 +126,7 @@ class go_temucraft_waygate : public GameObjectScript
 public:
     go_temucraft_waygate() : GameObjectScript("go_temucraft_waygate") { }
 
-    bool OnGossipHello(Player* player, GameObject* /*go*/) override
+    bool OnGossipHello(Player* player, GameObject* go) override
     {
         ChatHandler handler(player->GetSession());
         if (player->IsInCombat())
@@ -132,6 +134,13 @@ public:
             handler.SendSysMessage(TemucraftModuleText(MODULE, player, 68, "The way home won't open while you fight."));
             return true;
         }
+        // "Teleport to: <hearthstone spot>" first, unless the player turned prompts off (mod-temucraft answers Accept)
+        std::string home = TemucraftModuleText("mod-temucraft", player, 136, "your hearthstone spot");
+        if (AreaTableEntry const* area = sAreaTableStore.LookupEntry(player->m_homebindAreaId))
+            if (char const* name = area->area_name[player->GetSession()->GetSessionDbcLocale()]; name && *name)
+                home = name;
+        if (TemucraftAskObjectTeleport(player, go, home))
+            return true;
         player->TeleportTo(player->m_homebindMapId, player->m_homebindX, player->m_homebindY, player->m_homebindZ,
             player->GetOrientation());
         return true;
